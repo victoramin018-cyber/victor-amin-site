@@ -46,11 +46,25 @@ Log datado do que foi shipado. Append-only. Curador `:mem` revisa semanal.
 - [ ] Conectar GitHub repo ao projeto Vercel (auto-deploy on push) — Settings → Git no dashboard
 - [ ] Rodar Lighthouse Mobile via PSI: https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fwww.victoramin.com (PSI API anônima estourou quota; web UI funciona normal)
 
-## Sprint 2 (próximo) · Form + Pixel CAPI
-- [ ] `/api/lead` Vercel Function (zod + Kommo + CAPI)
-- [ ] Form thank-you redirect → `instagram.com/victoraminn/`
-- [ ] Honeypot + rate limit (Vercel KV)
-- [ ] Hash PII (sha256 lowercase) antes de mandar pra CAPI
+## 2026-05-02 · Sprint 2 código entregue (aguarda tokens pra ativar)
+- [x] `api/lead.ts` · POST handler com zod, honeypot, dedup event_id, log estruturado
+- [x] `lib/schema.ts` · zod schema com 5 enums travados de qualificação
+- [x] `lib/hash.ts` · sha256 + normalizers PII (Meta CAPI specs)
+- [x] `lib/meta-capi.ts` · Graph API v21.0 com user_data hashed + dedup event_id
+- [x] `lib/kommo.ts` · API v4 complex create + tags + custom fields + Note fallback
+- [x] Frontend reescrito · honeypot field + UUID v4 + fetch POST + loading + redirect
+- [x] Fallback wa.me em qualquer falha do endpoint
+- [x] TypeScript strict (tsconfig.json) · typecheck passa zero erros
+- [x] Deploy em produção · smoke tests passam (405, 400, 502 com event_id)
+- [x] Meta facebook-domain-verification token servindo
+
+### ⏳ Pendente p/ ativar Sprint 2 (env vars no Vercel)
+- [ ] `META_CAPI_ACCESS_TOKEN` — Events Manager → Pixel → Settings → Generate token
+- [ ] `KOMMO_LONG_LIVED_TOKEN` — Settings → Integrações → Criar integração → Long-lived token
+- [ ] (opcional) `KOMMO_PIPELINE_ID` + `KOMMO_STATUS_ID` — eu queryo após token
+- [ ] (opcional) `KOMMO_CF_*_ID` — eu queryo após token; sem eles, fallback Note
+
+Configurar em: https://vercel.com/victoramin018-cybers-projects/victor-amin-site/settings/environment-variables
 
 ## Pré-requisitos pendentes (user)
 - [x] Domínio victoramin.com reativado (Namecheap · ICANN verification OK)
