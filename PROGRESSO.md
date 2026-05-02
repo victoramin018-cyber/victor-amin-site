@@ -29,15 +29,22 @@ Log datado do que foi shipado. Append-only. Curador `:mem` revisa semanal.
   - `www.victoramin.com` (canônico)
   - `victoramin.com` (redireciona 301 pra www)
 
-## ⏳ Pendente Sprint 1 (user action)
-- [ ] **DNS Namecheap** — apagar 3 records Framer + adicionar 2 records Vercel:
-  - `A     @     76.76.21.21`
-  - `CNAME www   cname.vercel-dns.com`
-- [ ] Aguardar propagação (5-30min Namecheap BasicDNS)
-- [ ] Vercel emite SSL automático após DNS resolver
-- [ ] Validar: `https://www.victoramin.com` carrega · `https://victoramin.com` redireciona 301
-- [ ] Adicionar `www.victoramin.com` em Meta BM → Domains (verificação TXT)
+## ✅ Sprint 1 fechado · 2026-05-02 ~21:07 UTC
+- [x] DNS Namecheap configurado (`A @ 76.76.21.21` + `CNAME www cname.vercel-dns.com`)
+- [x] Propagação DNS confirmada via 8.8.8.8 em <5min
+- [x] SSL Let's Encrypt emitido em 2m30s
+- [x] `https://www.victoramin.com` → 200 OK (canônico)
+- [x] `https://victoramin.com` → 308 redirect → `www.victoramin.com`
+- [x] `http://www.victoramin.com` → 308 redirect → HTTPS
+- [x] Security headers servindo: HSTS · X-Frame · X-Content-Type · Referrer-Policy · Permissions-Policy
+- [x] Pixel `465701309646610` no DOM disparando `PageView` · `ViewContent` · `Lead`
+- [x] Cache-Control immutable 1y nos assets de imagem (case_01: 162KB · 200 OK)
+- [x] WhatsApp link `wa.me/5511978739319` no form
+
+### Pendente do user (não bloqueia operação · pode ir após)
+- [ ] Adicionar `www.victoramin.com` em Meta BM → Brand Safety → Domains (verificar TXT/meta)
 - [ ] Conectar GitHub repo ao projeto Vercel (auto-deploy on push) — Settings → Git no dashboard
+- [ ] Rodar Lighthouse Mobile via PSI: https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fwww.victoramin.com (PSI API anônima estourou quota; web UI funciona normal)
 
 ## Sprint 2 (próximo) · Form + Pixel CAPI
 - [ ] `/api/lead` Vercel Function (zod + Kommo + CAPI)
