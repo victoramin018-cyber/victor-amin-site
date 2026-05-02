@@ -24,7 +24,8 @@ import { randomUUID } from "node:crypto";
 
 export const config = {
   // Vercel Serverless Function (Node runtime, não Edge — precisa node:crypto).
-  runtime: "nodejs20.x",
+  // Versão do Node controlada via package.json engines.node.
+  runtime: "nodejs",
 };
 
 export default async function handler(
