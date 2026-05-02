@@ -1,13 +1,23 @@
 {
   "name": "victor-amin-site",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Landing oficial Victor Amin · Método Alta Performance",
+  "type": "module",
   "scripts": {
     "dev": "vercel dev",
-    "deploy": "vercel deploy --prod"
+    "deploy": "vercel deploy --prod",
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": "20.x"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@vercel/node": "^3.2.0",
+    "typescript": "^5.5.0"
   }
 }
