@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Victor Amin · Método Alta Performance">
+<title>Victor Amin · Método Alta Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','465701309646610');fbq('track','PageView');
+</script>
+<style>
+:root{--bg:#0A0A0A;--fg:#F5F4F0;--gold:#FFCC00;--gold-deep:#E0B400;--panel:#1F1F1F;--line:#2A2A2A;--muted:#888;--max:1240px;--section-pad:120px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.display{font-family:'Anton',sans-serif;line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold)}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px}
+section{padding:var(--section-pad) 0;position:relative}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav .logo img{height:28px;width:auto;display:block}
+.nav .logo .text{font-family:'Anton',sans-serif;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
+.nav .logo .text span{color:var(--gold)}
+.nav .ig{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.05em}
+.nav .ig:hover{color:var(--gold)}
+@media(max-width:600px){.nav .logo .text{display:none}}
+.cta{display:inline-block;background:transparent;color:var(--fg);padding:18px 36px;border:1px solid var(--gold);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;transition:all .3s;cursor:pointer}
+.cta:hover{background:var(--gold);color:var(--bg)}
+.cta-gold{background:var(--gold);color:var(--bg);font-family:'Anton',sans-serif;font-size:18px;padding:22px 44px;letter-spacing:.05em}
+.cta-gold:hover{background:transparent;color:var(--gold)}
+.cta-sub{display:block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);position:relative;overflow:hidden;padding-top:120px}
+.hero-victor{position:absolute;top:0;right:0;width:58%;height:100%;display:grid;grid-template-columns:1fr 1fr;z-index:1}
+.hero-victor .va-foto{background-size:cover;background-position:center top;position:relative;overflow:hidden}
+.hero-victor .va-foto.antes{background-image:url('victor_hero/01_antes.jpg');background-position:center 25%}
+.hero-victor .va-foto.depois{background-image:url('victor_hero/02_depois.jpg');background-position:center 30%}
+.hero-victor .va-foto::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.15) 0%,rgba(10,10,10,.6) 100%)}
+.hero-victor .va-foto .tag{position:absolute;bottom:24px;left:24px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;border-left:2px solid var(--gold);padding-left:10px;z-index:2}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,1) 0%,rgba(10,10,10,.95) 35%,rgba(10,10,10,.4) 50%,rgba(10,10,10,0) 100%);pointer-events:none;z-index:1}
+.hero .content{position:relative;z-index:2;max-width:600px}
+.hero h1{font-size:clamp(48px,7vw,88px);margin:24px 0 32px}
+.hero p{font-size:clamp(16px,1.4vw,19px);color:rgba(245,244,240,.85);max-width:480px;margin-bottom:40px}
+@media(max-width:900px){.hero-victor{display:none}}
+.authority{border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:40px 0}
+.authority-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
+.authority-item .num{font-family:'Anton',sans-serif;font-size:32px;color:var(--gold);line-height:1;margin-bottom:8px}
+.authority-item .label{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;line-height:1.5}
+@media(max-width:700px){.authority-grid{grid-template-columns:repeat(2,1fr);gap:32px}}
+.stance{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.stance h2{font-size:clamp(40px,5vw,64px)}
+.stance p{font-size:17px;color:rgba(245,244,240,.9);margin-bottom:24px}
+.stance-bullets{list-style:none;margin-top:32px;border-top:1px solid var(--line);padding-top:24px}
+.stance-bullets li{display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.stance-bullets .num{font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;min-width:32px}
+@media(max-width:900px){.stance{grid-template-columns:1fr;gap:32px}}
+</style>
+<style>
+.cases h2{font-size:clamp(36px,4.5vw,56px);margin:16px 0 64px;max-width:800px}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.case-card{background:var(--panel);border:1px solid var(--line);padding:32px;transition:border-color .3s}
+.case-card:hover{border-color:var(--gold)}
+.case-photo{width:100%;aspect-ratio:1080/961;background-size:cover;background-position:center;margin-bottom:24px;border:1px solid var(--line)}
+.case-slider{position:relative;width:100%;aspect-ratio:9/16;background:#0a0a0a;margin-bottom:24px;overflow:hidden;border:1px solid var(--line)}
+.case-slider .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .6s}
+.case-slider .slide.active{opacity:1}
+.case-slider .label{position:absolute;bottom:16px;left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);background:rgba(10,10,10,.85);padding:6px 10px;letter-spacing:.1em;text-transform:uppercase;border-left:2px solid var(--gold);z-index:2}
+.case-slider .bullets{position:absolute;bottom:14px;right:14px;display:flex;gap:6px;z-index:2}
+.case-slider .bullet{width:24px;height:2px;background:rgba(245,244,240,.3);transition:background .3s;cursor:pointer}
+.case-slider .bullet.active{background:var(--gold)}
+.case-row{display:grid;grid-template-columns:100px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.case-row .key{font-family:'JetBrains Mono',monospace;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;font-size:11px}
+.case-quote{margin-top:20px;padding-top:20px;border-top:1px solid var(--line);font-style:italic;font-size:15px}
+.case-author{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.1em}
+.case-tag{display:inline-block;margin-top:16px;padding:4px 10px;border:1px solid var(--gold);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.method h2{font-size:clamp(40px,5vw,64px);text-align:center;margin-bottom:80px}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:60px}
+.method-step .num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:64px;color:var(--gold);line-height:1;margin-bottom:24px}
+.method-step h3{font-family:'Anton',sans-serif;font-size:28px;margin-bottom:16px;text-transform:uppercase}
+.method-step p{font-size:15px;color:rgba(245,244,240,.8)}
+@media(max-width:700px){.method-grid{grid-template-columns:1fr;gap:32px}}
+.offers h2{font-size:clamp(40px,5vw,64px);text-align:center;margin-bottom:64px}
+.offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.offer-card{background:var(--bg);border:1px solid var(--line);padding:48px}
+.offer-card.featured{border:2px solid var(--gold)}
+.offer-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.offer-title{font-family:'Anton',sans-serif;font-size:36px;margin-bottom:12px;text-transform:uppercase}
+.offer-sub{color:rgba(245,244,240,.7);margin-bottom:24px;font-size:15px}
+.offer-commitment{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:32px}
+.offer-list{list-style:none;margin-bottom:32px}
+.offer-list li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;display:flex;gap:12px}
+.offer-list li::before{content:'·';color:var(--gold);font-weight:900}
+@media(max-width:700px){.offers-grid{grid-template-columns:1fr}}
+.athletes{position:relative;background-color:#0a0a0a;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.athletes::before{content:'';position:absolute;inset:0;background-image:url('cases_final/case_07.jpg');background-size:cover;background-position:center;filter:grayscale(1) contrast(1.05) brightness(.5);opacity:.4}
+.athletes .container{position:relative;z-index:2}
+.athletes h2{font-size:clamp(40px,5vw,64px);margin:24px 0;max-width:800px}
+.athletes p{font-size:17px;max-width:720px;color:rgba(245,244,240,.88);line-height:1.7;margin-bottom:16px}
+.athletes-meta{color:var(--gold)!important;font-family:'JetBrains Mono',monospace!important;font-size:13px!important;letter-spacing:.1em!important;text-transform:uppercase!important;margin-top:24px!important;line-height:1.6!important}
+.conquistas{background:var(--bg);border-top:1px solid var(--line)}
+.conquistas h2{font-size:clamp(36px,4.5vw,56px);margin:16px 0}
+.conquistas .lead{color:rgba(245,244,240,.85);font-size:17px;margin-bottom:56px;max-width:660px}
+.conquistas-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:stretch}
+.conquista-card{background:var(--panel);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s}
+.conquista-card:hover{border-color:var(--gold)}
+.conquista-card .img{width:100%;aspect-ratio:4/3;background-size:cover;background-position:center}
+.conquista-card.materia .img{aspect-ratio:9/16}
+.conquista-card .body{padding:28px;flex:1}
+.conquista-card .ano{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px}
+.conquista-card h3{font-family:'Anton',sans-serif;font-size:26px;margin-bottom:12px;text-transform:uppercase}
+.conquista-card p{font-size:14px;color:rgba(245,244,240,.78);line-height:1.6}
+.conquista-bullets{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px}
+.conquista-bullet{background:var(--panel);border-left:2px solid var(--gold);padding:16px 20px}
+.conquista-bullet .num{font-family:'Anton',sans-serif;font-size:22px;color:var(--gold);line-height:1}
+.conquista-bullet .label{font-size:13px;margin-top:4px}
+@media(max-width:800px){.conquistas-grid{grid-template-columns:1fr}}
+</style>
+<style>
+.faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:80px}
+.faq h2{font-size:clamp(36px,4.5vw,52px);line-height:.95}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{padding:24px 0;font-size:17px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'+';color:var(--gold);font-size:24px;transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;color:rgba(245,244,240,.75);font-size:15px;line-height:1.7}
+.faq-item.open .faq-a{max-height:400px;padding:0 0 24px}
+@media(max-width:800px){.faq-grid{grid-template-columns:1fr;gap:32px}}
+.form-section{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.form-section .container{max-width:760px}
+.form-section h2{font-size:clamp(36px,4.5vw,56px);margin-bottom:16px}
+.form-section .form-sub{color:rgba(245,244,240,.85);font-size:16px;margin-bottom:40px;max-width:600px}
+.form-section .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-section .form-row{display:flex;flex-direction:column;gap:8px}
+.form-section .form-row.full{grid-column:1/-1}
+.form-section label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.form-section input,.form-section select,.form-section textarea{background:var(--bg);border:1px solid var(--line);color:var(--fg);padding:14px 16px;font-family:'Inter',sans-serif;font-size:15px;width:100%;transition:border-color .2s}
+.form-section input:focus,.form-section select:focus,.form-section textarea:focus{outline:none;border-color:var(--gold)}
+.form-section select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 18px) 18px,calc(100% - 13px) 18px;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px;cursor:pointer}
+.form-section textarea{resize:vertical;min-height:80px}
+.form-section .submit-btn{margin-top:32px;background:var(--gold);color:var(--bg);border:none;font-family:'Anton',sans-serif;font-size:18px;padding:22px 44px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:all .3s;width:100%}
+.form-section .submit-btn:hover{background:var(--gold-deep);transform:translateY(-2px)}
+.form-section .privacy{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.05em;text-align:center}
+.form-section .success{background:var(--bg);border:1px solid var(--gold);padding:32px;text-align:center;display:none}
+.form-section .success.show{display:block}
+.form-section .success .check{font-family:'Anton',sans-serif;font-size:48px;color:var(--gold);margin-bottom:16px}
+@media(max-width:700px){.form-section .form-grid{grid-template-columns:1fr}}
+.closing{min-height:90vh;display:flex;align-items:center;background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);position:relative;overflow:hidden}
+.closing::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background-image:url('victor_hero/02_depois.jpg');background-size:cover;background-position:center 30%;filter:grayscale(1) contrast(1.15) brightness(.85);opacity:.6}
+.closing::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,1) 0%,rgba(10,10,10,.85) 50%,rgba(10,10,10,.3) 100%);pointer-events:none}
+.closing .content{position:relative;z-index:2;max-width:640px}
+.closing h2{font-size:clamp(48px,6vw,80px);margin:24px 0 32px}
+.closing p{font-size:17px;color:rgba(245,244,240,.85);margin-bottom:40px;max-width:540px}
+footer{border-top:1px solid var(--line);padding:28px 32px;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.05em}
+footer .footer-left{display:flex;align-items:center;gap:14px}
+footer .footer-logo{height:22px;width:auto}
+footer .footer-left span{color:var(--fg);font-family:'Anton',sans-serif;font-size:14px;letter-spacing:.08em}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--gold)}
+@media(max-width:700px){footer{flex-direction:column;gap:12px;padding:24px;text-align:center}}
+.fade-up{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.25,.1,.25,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<nav class="nav">
+<a href="#" class="logo"><img src="logo/va_symbol.png" alt="Victor Amin"><span class="text">VICTOR AMIN<span> · </span>MÉTODO ALTA PERFORMANCE</span></a>
+<a href="https://instagram.com/victoraminn" target="_blank" rel="noopener" class="ig">@VICTORAMINN</a>
+</nav>
+<section class="hero">
+<div class="hero-victor">
+<div class="va-foto antes"><span class="tag">2018 · 15 anos</span></div>
+<div class="va-foto depois"><span class="tag">Hoje · Método aplicado</span></div>
+</div>
+<div class="container"><div class="content">
+<p class="eyebrow">Método Alta Performance · São Paulo</p>
+<h1 class="display">Transforme<br>corpo, postura<br>e imagem.</h1>
+<p>Personal trainer de alto padrão. Estética como consequência da postura corrigida e da performance treinada.</p>
+<a href="#aplicar" class="cta">Aplicar para consultoria</a>
+<span class="cta-sub">Vagas limitadas · resposta em até 24h</span>
+</div></div>
+</section>
+<section class="authority"><div class="container"><div class="authority-grid">
+<div class="authority-item"><div class="num">7 anos</div><div class="label">No fisiculturismo</div></div>
+<div class="authority-item"><div class="num">Atletas</div><div class="label">Em pódios nacionais e internacionais</div></div>
+<div class="authority-item"><div class="num">UNIFESP</div><div class="label">Educação Física</div></div>
+<div class="authority-item"><div class="num">Mr. Olympia</div><div class="label">Treinador mais jovem do mundo aos 22</div></div>
+</div></div></section>
+<section><div class="container"><div class="stance">
+<h2 class="display">Postura<br>primeiro.<br>Estética<br>como<br>consequência.</h2>
+<div>
+<p>A maioria treina o que vê no espelho. O resultado é estética curta e dor recorrente.</p>
+<p>A operação é outra. Avaliação postural primeiro. Identifica encurtamento, fraqueza e desalinhamento. Aplica protocolo. Estética aparece como consequência, e fica.</p>
+<ul class="stance-bullets">
+<li><span class="num">01</span><span>Avaliação postural inicial</span></li>
+<li><span class="num">02</span><span>Protocolo individual baseado em diagnóstico</span></li>
+<li><span class="num">03</span><span>Resultado mensurável em até 90 dias</span></li>
+</ul>
+</div>
+</div></div></section>
+<section class="cases"><div class="container">
+<p class="eyebrow">Casos reais · protocolo aplicado</p>
+<h2 class="display">O que a postura corrigida entrega.</h2>
+<div class="cases-grid">
+
+<div class="case-card">
+<div class="case-slider" data-interval="3500" data-labels="Frente,Lado direito,Costas,Lado esquerdo">
+<div class="slide active" style="background-image:url('cases_slider/fabricio/01_FRENTE.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/fabricio/02_LADO_DIREITO.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/fabricio/03_COSTAS.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/fabricio/04_LADO_ESQUERDO.jpg');"></div>
+<div class="label">Frente</div>
+<div class="bullets"><div class="bullet active"></div><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div></div>
+</div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Encurtamento cadeia anterior · postura projetada</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>3 semanas</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>Alinhamento corporal · definição abdominal aparente</span></div>
+<p class="case-quote">"Em 3 semanas eu vi mudança que não tinha visto em 2 anos de academia."</p>
+<p class="case-author">— Fabricio</p>
+<span class="case-tag">Personal Presencial</span>
+</div>
+
+<div class="case-card">
+<div class="case-photo" style="background-image:url('cases_final/case_02.jpg');" role="img" aria-label="Larissa"></div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Desalinhamento corporal · 87kg</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>3 meses</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>Postura realinhada · 73kg · composição redistribuída</span></div>
+<p class="case-quote">"Achei que era genética. Era método errado."</p>
+<p class="case-author">— Larissa</p>
+<span class="case-tag">Consultoria Online</span>
+</div>
+
+<div class="case-card">
+<div class="case-photo" style="background-image:url('cases_final/case_03.jpg');" role="img" aria-label="Davi"></div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Cabeça projetada · ombro curvado</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>1 mês</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>Cabeça alinhada · ombro aberto</span></div>
+<p class="case-quote">"Mudou minha postura. Mudou como as pessoas me veem."</p>
+<p class="case-author">— Davi</p>
+<span class="case-tag">Personal Presencial</span>
+</div>
+
+<div class="case-card">
+<div class="case-photo" style="background-image:url('cases_final/case_04.jpg');" role="img" aria-label="Victoria"></div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Desequilíbrio cadeia posterior</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>1 mês</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>Cadeia posterior simétrica e fortalecida</span></div>
+<p class="case-quote">"1 mês de treino certo vale mais que 1 ano de treino solto."</p>
+<p class="case-author">— Victoria</p>
+<span class="case-tag">Consultoria Online</span>
+</div>
+
+<div class="case-card">
+<div class="case-photo" style="background-image:url('cases_final/case_05.jpg');" role="img" aria-label="Ulizel"></div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Postura de proteção · cifose torácica leve</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>3 semanas</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>Tórax aberto · postura ereta · volume restaurado</span></div>
+<p class="case-quote">"Comer pra crescer também é técnica. Aprendi com o Victor."</p>
+<p class="case-author">— Ulizel</p>
+<span class="case-tag">Consultoria Online</span>
+</div>
+
+<div class="case-card">
+<div class="case-slider" data-interval="3500" data-labels="Frente,Mais musculoso,Lado esquerdo,Costas 1,Costas 2">
+<div class="slide active" style="background-image:url('cases_slider/victor_balota/01_FRENTE.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/victor_balota/02_MAIS_MUSCULOSO.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/victor_balota/03_LADO_ESQUERDO.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/victor_balota/04_COSTAS_1.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/victor_balota/05_COSTAS_2.jpg');"></div>
+<div class="label">Frente</div>
+<div class="bullets"><div class="bullet active"></div><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div></div>
+</div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Escoliose</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>3 semanas</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>Alinhamento da coluna</span></div>
+<p class="case-quote">"[Depoimento em vídeo · será inserido]"</p>
+<p class="case-author">— Victor Balota</p>
+<span class="case-tag">Consultoria Online</span>
+</div>
+
+<div class="case-card">
+<div class="case-slider" data-interval="3500" data-labels="Frente,Direita,Costas,Esquerdo">
+<div class="slide active" style="background-image:url('cases_slider/vinicius_campos/01_FRENTE.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/vinicius_campos/02_DIREITA.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/vinicius_campos/03_COSTAS.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/vinicius_campos/04_ESQUERDO.jpg');"></div>
+<div class="label">Frente</div>
+<div class="bullets"><div class="bullet active"></div><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div></div>
+</div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Atleta natural · primeira competição</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>1 mês de preparação</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>2 TOP 1 · 1 Overall · 1ª competição</span></div>
+<p class="case-quote">"Disciplina, consistência e estratégia trazem resultados de alto nível no palco."</p>
+<p class="case-author">— Vinícius Campos</p>
+<span class="case-tag">Atleta · Personal Presencial</span>
+</div>
+
+<div class="case-card">
+<div class="case-slider" data-interval="3500" data-labels="Pose clássica,Costas,Peito melhor lado">
+<div class="slide active" style="background-image:url('cases_slider/arthur_manicoba/01_POSE_CLASSICA.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/arthur_manicoba/02_COSTAS.jpg');"></div>
+<div class="slide" style="background-image:url('cases_slider/arthur_manicoba/03_PEITO_MELHOR_LADO.jpg');"></div>
+<div class="label">Pose clássica</div>
+<div class="bullets"><div class="bullet active"></div><div class="bullet"></div><div class="bullet"></div></div>
+</div>
+<div class="case-row"><span class="key">Diagnóstico</span><span>Brasileiro mais novo · vaga Mr. Olympia</span></div>
+<div class="case-row"><span class="key">Protocolo</span><span>1 mês em preparação</span></div>
+<div class="case-row"><span class="key">Resultado</span><span>Melhora da postura · pontos fracos corrigidos</span></div>
+<p class="case-quote">"Apenas 1 mês de protocolo e o palco mostrou outra coisa."</p>
+<p class="case-author">— Arthur Manicoba</p>
+<span class="case-tag">Atleta · Mr. Olympia</span>
+</div>
+
+</div></div></section>
+<section class="method"><div class="container">
+<h2 class="display">O método em três etapas.</h2>
+<div class="method-grid">
+<div class="method-step"><div class="num">01.</div><h3>Diagnóstico</h3><p>Avaliação postural completa. Identificação de encurtamentos, fraquezas e desalinhamentos. Sem isso, não há protocolo.</p></div>
+<div class="method-step"><div class="num">02.</div><h3>Protocolo</h3><p>Plano individual baseado no diagnóstico. Treino · nutrição · reeducação postural. Sem genérico.</p></div>
+<div class="method-step"><div class="num">03.</div><h3>Execução</h3><p>Acompanhamento técnico semanal. Ajuste contínuo. Resultado mensurável em até 90 dias.</p></div>
+</div></div></section>
+
+<section class="offers"><div class="container">
+<h2 class="display">Duas formas de entrar.</h2>
+<div class="offers-grid">
+<div class="offer-card featured">
+<div class="offer-eyebrow">Presencial · São Paulo Zona Oeste</div>
+<div class="offer-title">Personal Presencial</div>
+<div class="offer-sub">Treinos guiados pessoalmente · acompanhamento semana a semana.</div>
+<div class="offer-commitment">Compromisso mínimo · 6 meses</div>
+<ul class="offer-list">
+<li>Avaliação postural completa</li>
+<li>Treinos presenciais 3 a 5x semana</li>
+<li>Plano nutricional individual</li>
+<li>Reeducação postural</li>
+<li>Acompanhamento contínuo via WhatsApp</li>
+</ul>
+<a href="#aplicar" class="cta">Aplicar para avaliação</a>
+</div>
+<div class="offer-card">
+<div class="offer-eyebrow">Online · Brasil e exterior</div>
+<div class="offer-title">Consultoria Online</div>
+<div class="offer-sub">Plano 100% individual · contato semanal · sem genérico.</div>
+<div class="offer-commitment">Compromisso · mensal</div>
+<ul class="offer-list">
+<li>Avaliação postural por vídeo</li>
+<li>Plano de treino individual</li>
+<li>Plano nutricional</li>
+<li>Ajustes semanais</li>
+<li>Suporte direto via WhatsApp</li>
+</ul>
+<a href="#aplicar" class="cta">Aplicar para consultoria</a>
+</div>
+</div></div></section>
+
+<section class="athletes"><div class="container">
+<p class="eyebrow">Quem é Victor Amin</p>
+<h2 class="display">Não é estética solta. É padrão.</h2>
+<p>Aos 15, eu não tinha braço, postura nem disciplina. Treinava errado, comia mal, sem método.</p>
+<p>Em 2018 conheci o fisiculturismo de verdade. Estudei nutrição, treino, periodização e psicologia do esporte. Aos 17 entrei na UNIFESP em Educação Física. Aos 22, me tornei o treinador mais jovem do mundo a classificar um atleta para o Mr. Olympia.</p>
+<p>Hoje aplico o mesmo método fora do palco. Para quem quer corpo, postura e performance no dia a dia.</p>
+<p class="athletes-meta">Atendimento presencial · São Paulo Zona Oeste e Sul · Consultoria online para qualquer lugar</p>
+</div></section>
+
+<section class="conquistas"><div class="container">
+<p class="eyebrow">Conquistas · prova além do palco</p>
+<h2 class="display">Disciplina que rende título.</h2>
+<p class="lead">O método não nasce só na sala de treino. Aplicado em mim, virou conquistas dentro e fora da academia.</p>
+<div class="conquistas-grid">
+<div class="conquista-card">
+<div class="img" style="background-image:url('conquistas/troféus_rei_jogos.jpg');"></div>
+<div class="body">
+<div class="ano">2024 · Universidade Federal</div>
+<h3>Rei dos Jogos da Unisanta</h3>
+<p>Coroado entre 91 postulantes de 46 atléticas. Físico que transmite presença, confiança e autoridade — não só estética.</p>
+</div>
+</div>
+<div class="conquista-card materia">
+<div class="img" style="background-image:url('conquistas/santa_portal_materia.jpg');"></div>
+<div class="body">
+<div class="ano">Imprensa · Santa Portal</div>
+<h3>Cobertura externa</h3>
+<p>Matéria publicada no Santa Portal sobre o desfile de Rei e Rainha · Victor Haddad, Educação Física Unifesp.</p>
+</div>
+</div>
+</div>
+<div class="conquista-bullets">
+<div class="conquista-bullet"><div class="num">22 anos</div><div class="label">Treinador mais jovem do mundo a classificar atleta para o Mr. Olympia</div></div>
+<div class="conquista-bullet"><div class="num">UNIFESP</div><div class="label">Educação Física · formação técnica</div></div>
+<div class="conquista-bullet"><div class="num">7 anos</div><div class="label">Aplicando o método no fisiculturismo de alto rendimento</div></div>
+<div class="conquista-bullet"><div class="num">Atletas</div><div class="label">Em pódios nacionais e internacionais</div></div>
+</div>
+</div></section>
+
+<section class="faq"><div class="container"><div class="faq-grid">
+<h2 class="display">Perguntas diretas. Respostas diretas.</h2>
+<div>
+<div class="faq-item"><div class="faq-q">Por que cobrar essa faixa de valor?</div><div class="faq-a">Operação de baixo volume e alto contato. Não há margem pra atender em volume sem perder técnica. O preço protege a qualidade do trabalho.</div></div>
+<div class="faq-item"><div class="faq-q">Posso treinar em qualquer academia?</div><div class="faq-a">Sim. O protocolo é individual e adaptável a qualquer estrutura. Para presencial, atendimento em academias parceiras de Zona Oeste e Sul de São Paulo.</div></div>
+<div class="faq-item"><div class="faq-q">Resultado em quanto tempo?</div><div class="faq-a">Mensurável em até 90 dias. Visível em até 30. O contrato presencial mínimo é 6 meses porque transformação postural exige consistência.</div></div>
+<div class="faq-item"><div class="faq-q">Tenho lesão ou restrição médica. Funciona?</div><div class="faq-a">Diagnóstico antes de protocolo. Casos com restrição passam por avaliação detalhada e podem requerer parecer médico antes do início.</div></div>
+<div class="faq-item"><div class="faq-q">Funciona para mulher?</div><div class="faq-a">Sim. Casos públicos acima incluem pessoas com objetivos diferentes (composição, postura, volume, redefinição). Método individual adapta a meta.</div></div>
+</div>
+</div></div></section>
+<section class="form-section" id="aplicar"><div class="container">
+<p class="eyebrow">Aplicação · avaliada em 24h</p>
+<h2 class="display">Preencha pra eu te avaliar.</h2>
+<p class="form-sub">10 perguntas. 2 minutos. As respostas vão direto pra mim e definem se faz sentido você entrar agora ou esperar uma vaga.</p>
+<form id="aplicacao-form" class="form-grid">
+<div class="form-row"><label for="nome">Nome completo</label><input type="text" id="nome" name="nome" required></div>
+<div class="form-row"><label for="idade">Idade</label><input type="number" id="idade" name="idade" min="14" max="80" required></div>
+<div class="form-row"><label for="whatsapp">WhatsApp (com DDD)</label><input type="tel" id="whatsapp" name="whatsapp" placeholder="11 99999-9999" required></div>
+<div class="form-row"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+<div class="form-row"><label for="objetivo">Objetivo principal</label><select id="objetivo" name="objetivo" required>
+<option value="">Selecione</option>
+<option>Estética e composição corporal</option>
+<option>Postura e dor crônica</option>
+<option>Performance esportiva</option>
+<option>Preparação para palco (fisiculturismo)</option>
+<option>Saúde e qualidade de vida</option>
+<option>Mais de um objetivo combinado</option>
+</select></div>
+<div class="form-row"><label for="modalidade">Modalidade desejada</label><select id="modalidade" name="modalidade" required>
+<option value="">Selecione</option>
+<option>Personal Presencial · São Paulo Zona Oeste</option>
+<option>Personal Presencial · São Paulo Zona Sul</option>
+<option>Consultoria Online · de qualquer lugar</option>
+<option>Sem preferência · me orienta</option>
+</select></div>
+<div class="form-row"><label for="experiencia">Tempo treinando</label><select id="experiencia" name="experiencia" required>
+<option value="">Selecione</option>
+<option>Nunca treinei sério</option>
+<option>Menos de 1 ano</option>
+<option>1 a 3 anos</option>
+<option>3 a 5 anos</option>
+<option>Mais de 5 anos</option>
+</select></div>
+<div class="form-row"><label for="investimento">Faixa de investimento mensal</label><select id="investimento" name="investimento" required>
+<option value="">Selecione</option>
+<option>Até R$ 200</option>
+<option>R$ 200 a R$ 500</option>
+<option>R$ 500 a R$ 1.500</option>
+<option>R$ 1.500 a R$ 3.000</option>
+<option>Acima de R$ 3.000</option>
+</select></div>
+<div class="form-row"><label for="urgencia">Quando quer começar</label><select id="urgencia" name="urgencia" required>
+<option value="">Selecione</option>
+<option>Esta semana</option>
+<option>Nas próximas 2 semanas</option>
+<option>No próximo mês</option>
+<option>Estou pesquisando · sem urgência</option>
+</select></div>
+<div class="form-row"><label for="restricao">Tem dor, lesão ou restrição médica? (opcional)</label><input type="text" id="restricao" name="restricao" placeholder="Ex: dor lombar, joelho, escoliose, hérnia, nenhum…"></div>
+<div class="form-row full"><label for="motivo">O que te fez aplicar agora?</label><textarea id="motivo" name="motivo" placeholder="Conta em 2 ou 3 linhas o que está te incomodando ou o que quer alcançar." required></textarea></div>
+<div class="form-row full"><button type="submit" class="submit-btn">Enviar aplicação</button><p class="privacy">Suas respostas vão direto pro Victor · resposta em até 24h via WhatsApp</p></div>
+</form>
+<div id="aplicacao-success" class="success">
+<div class="check">✓</div>
+<h3 style="font-family:'Anton',sans-serif;font-size:28px;margin-bottom:12px;text-transform:uppercase;">Aplicação recebida.</h3>
+<p style="color:rgba(245,244,240,.85);font-size:15px;">Você vai receber resposta no WhatsApp em até 24h. Se a vaga fizer sentido, marcamos uma chamada. Se não fizer agora, te explico por quê e o que recomendar.</p>
+</div>
+</div></section>
+
+<section class="closing"><div class="container"><div class="content">
+<p class="eyebrow">Próximo passo</p>
+<h2 class="display">Se está a fim<br>de começar,<br>começa agora.</h2>
+<p>Aplicação avaliada em até 24h. Vagas limitadas por mês para garantir qualidade do atendimento. Sem promessa fácil. Trabalho de verdade.</p>
+<a href="#aplicar" class="cta cta-gold">Aplicar agora</a>
+<span class="cta-sub">Resposta em até 24h · Vagas limitadas</span>
+</div></div></section>
+
+<footer>
+<div class="footer-left"><img src="logo/va_symbol.png" alt="Victor Amin" class="footer-logo"><span>VICTOR AMIN · MÉTODO ALTA PERFORMANCE</span></div>
+<div>São Paulo · Brasil</div>
+<a href="https://instagram.com/victoraminn" target="_blank" rel="noopener">@VICTORAMINN</a>
+</footer>
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q').addEventListener('click',()=>item.classList.toggle('open'));});
+document.querySelectorAll('.cta').forEach(btn=>{btn.addEventListener('click',()=>{if(typeof fbq!=='undefined'){const txt=btn.textContent.toLowerCase();const tipo=txt.includes('avalia')?'Aplicação Personal Presencial':txt.includes('agora')?'Aplicação Geral':'Aplicação Consultoria Online';fbq('track','ViewContent',{content_name:tipo});}});});
+document.querySelectorAll('.case-slider').forEach(slider=>{
+const slides=slider.querySelectorAll('.slide');
+const bullets=slider.querySelectorAll('.bullet');
+const labelEl=slider.querySelector('.label');
+const labels=(slider.dataset.labels||'').split(',');
+const interval=parseInt(slider.dataset.interval||3500,10);
+let idx=0,timer=null;
+function goto(i){slides[idx].classList.remove('active');bullets[idx]&&bullets[idx].classList.remove('active');idx=(i+slides.length)%slides.length;slides[idx].classList.add('active');bullets[idx]&&bullets[idx].classList.add('active');if(labelEl&&labels[idx])labelEl.textContent=labels[idx];}
+function start(){stop();timer=setInterval(()=>goto(idx+1),interval);}
+function stop(){if(timer){clearInterval(timer);timer=null;}}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>e.isIntersecting?start():stop());},{threshold:0.25});
+obs.observe(slider);
+bullets.forEach((b,i)=>b.addEventListener('click',()=>{goto(i);start();}));
+slider.addEventListener('mouseenter',stop);
+slider.addEventListener('mouseleave',start);
+});
+const form=document.getElementById('aplicacao-form');
+if(form){form.addEventListener('submit',e=>{
+e.preventDefault();
+const data=Object.fromEntries(new FormData(form).entries());
+if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Aplicação Formulário',objetivo:data.objetivo,modalidade:data.modalidade,investimento:data.investimento});}
+const msg=`🟡 NOVA APLICAÇÃO · Site Victor Amin\n\nNome: ${data.nome}\nIdade: ${data.idade}\nWhatsApp: ${data.whatsapp}\nEmail: ${data.email}\n\nObjetivo: ${data.objetivo}\nModalidade: ${data.modalidade}\nExperiência: ${data.experiencia}\nInvestimento: ${data.investimento}\nQuando começar: ${data.urgencia}\nRestrição: ${data.restricao||'nenhuma'}\n\nMotivo:\n${data.motivo}`;
+const url=`https://wa.me/5511978739319?text=${encodeURIComponent(msg)}`;
+form.style.display='none';
+document.getElementById('aplicacao-success').classList.add('show');
+window.open(url,'_blank');
+});}
+const obs2=new IntersectionObserver(entries=>{entries.forEach(e=>e.isIntersecting&&e.target.classList.add('visible'));},{threshold:0.1});
+document.querySelectorAll('section').forEach(s=>{s.classList.add('fade-up');obs2.observe(s);});
+</script>
+</body>
+</html>

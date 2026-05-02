@@ -1,0 +1,13 @@
+{
+  "name": "victor-amin-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Landing oficial Victor Amin · Método Alta Performance",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
