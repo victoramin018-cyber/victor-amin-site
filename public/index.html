@@ -180,7 +180,18 @@ section{padding:var(--section-pad) 0;position:relative}
 .form-section .success{background:var(--bg);border:1px solid var(--gold);padding:32px;text-align:center;display:none}
 .form-section .success.show{display:block}
 .form-section .success .check{font-family:'Anton',sans-serif;font-size:48px;color:var(--gold);margin-bottom:16px}
-@media(max-width:700px){.form-section .form-grid{grid-template-columns:1fr}}
+/* 2-step form */
+.form-section .form-step{display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:18px}
+.form-section .form-step.active{display:grid}
+.form-section .form-progress{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin-bottom:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.form-section .form-progress .dot{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s}
+.form-section .form-progress .dot.active{background:var(--gold)}
+.form-section .form-progress .label{margin-left:auto;font-weight:500}
+.form-section .btn-row{grid-column:1/-1;display:flex;gap:12px;align-items:stretch;margin-top:32px}
+.form-section .btn-row .submit-btn{margin-top:0;flex:1}
+.form-section .btn-back{background:transparent;color:var(--fg);border:1px solid var(--line);font-family:'Anton',sans-serif;font-size:14px;padding:0 28px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:all .2s}
+.form-section .btn-back:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:700px){.form-section .form-grid,.form-section .form-step{grid-template-columns:1fr}.form-section .btn-row{flex-direction:column-reverse}.form-section .btn-back{padding:16px}}
 .closing{min-height:90vh;display:flex;align-items:center;background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);position:relative;overflow:hidden}
 .closing::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background-image:url('victor_hero/02_depois.jpg');background-image:image-set(url('victor_hero/02_depois.webp') type('image/webp'),url('victor_hero/02_depois.jpg') type('image/jpeg'));background-size:cover;background-position:center 30%;filter:grayscale(1) contrast(1.15) brightness(.85);opacity:.6}
 .closing::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,1) 0%,rgba(10,10,10,.85) 50%,rgba(10,10,10,.3) 100%);pointer-events:none}
@@ -313,7 +324,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <a href="#main" class="skip-link">Pular para o conteúdo</a>
 <nav class="nav" aria-label="Navegação principal">
 <a href="#" class="logo" aria-label="Victor Amin · Método Alta Performance · ir para o topo"><img src="logo/va_symbol.png" alt="" width="28" height="28" decoding="async"><span class="text" aria-hidden="true">VICTOR AMIN<span> · </span>MÉTODO ALTA PERFORMANCE</span></a>
-<a href="https://instagram.com/victoraminn" target="_blank" rel="noopener" class="ig" aria-label="Instagram do Victor Amin (abre em nova aba)">@VICTORAMINN</a>
+<a href="https://instagram.com/victoraminn" target="_blank" rel="noopener" class="ig" data-loc="header" aria-label="Instagram do Victor Amin (abre em nova aba)">@VICTORAMINN</a>
 </nav>
 <main id="main">
 <section class="hero">
@@ -325,7 +336,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <p class="eyebrow">Método Alta Performance · São Paulo</p>
 <h1 class="display">Transforme<br>corpo, postura<br>e imagem.</h1>
 <p>Personal trainer de alto padrão. Estética como consequência da postura corrigida e da performance treinada.</p>
-<a href="#aplicar" class="cta">Aplicar para consultoria</a>
+<a href="#aplicar" class="cta" data-loc="hero">Aplicar para consultoria</a>
 <span class="cta-sub">Vagas limitadas · resposta em até 24h</span>
 </div></div>
 </section>
@@ -484,7 +495,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <li>Reeducação postural</li>
 <li>Acompanhamento contínuo via WhatsApp</li>
 </ul>
-<a href="#aplicar" class="cta">Aplicar para avaliação</a>
+<a href="#aplicar" class="cta" data-loc="offer-presencial">Aplicar para avaliação</a>
 </div>
 <div class="offer-card">
 <div class="offer-eyebrow">Online · Brasil e exterior</div>
@@ -498,7 +509,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <li>Ajustes semanais</li>
 <li>Suporte direto via WhatsApp</li>
 </ul>
-<a href="#aplicar" class="cta">Aplicar para consultoria</a>
+<a href="#aplicar" class="cta" data-loc="offer-online">Aplicar para consultoria</a>
 </div>
 </div></div></section>
 
@@ -552,15 +563,32 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 </div>
 </div></div></section>
 <section class="form-section" id="aplicar"><div class="container">
-<p class="eyebrow">Aplicação · avaliada em 24h</p>
+<p class="eyebrow">Aplicação · 2 etapas · 90 segundos</p>
 <h2 class="display">Preencha pra eu te avaliar.</h2>
-<p class="form-sub">10 perguntas. 2 minutos. As respostas vão direto pra mim e definem se faz sentido você entrar agora ou esperar uma vaga.</p>
+<p class="form-sub">Primeiro contato + qualificação. As respostas vão direto pra mim e definem se faz sentido você entrar agora ou esperar uma vaga.</p>
 <form id="aplicacao-form" class="form-grid" novalidate>
+<div class="form-progress" role="status" aria-live="polite">
+  <span class="dot active" data-dot="1"></span><span class="dot" data-dot="2"></span>
+  <span class="label" id="form-step-label">Etapa 1 de 2 · Contato</span>
+</div>
 <div class="form-row" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;"><label for="hp_website">Não preencher</label><input type="text" id="hp_website" name="hp_website" tabindex="-1" autocomplete="off"></div>
+<!-- Etapa 1 · Contato (5 campos essenciais · low friction) -->
+<div class="form-step active" data-step="1" aria-label="Etapa 1: contato">
 <div class="form-row"><label for="nome">Nome completo</label><input type="text" id="nome" name="nome" required></div>
 <div class="form-row"><label for="idade">Idade</label><input type="number" id="idade" name="idade" min="14" max="80" required></div>
 <div class="form-row"><label for="whatsapp">WhatsApp (com DDD)</label><input type="tel" id="whatsapp" name="whatsapp" placeholder="11 99999-9999" required></div>
 <div class="form-row"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+<div class="form-row full"><label for="modalidade">Modalidade desejada</label><select id="modalidade" name="modalidade" required>
+<option value="">Selecione</option>
+<option>Personal Presencial · São Paulo Zona Oeste</option>
+<option>Personal Presencial · São Paulo Zona Sul</option>
+<option>Consultoria Online · de qualquer lugar</option>
+<option>Sem preferência · me orienta</option>
+</select></div>
+<div class="btn-row"><button type="button" class="submit-btn" id="form-next">Continuar →</button></div>
+</div>
+<!-- Etapa 2 · Qualificação (6 campos · só aparece após etapa 1 válida) -->
+<div class="form-step" data-step="2" aria-label="Etapa 2: qualificação" hidden>
 <div class="form-row"><label for="objetivo">Objetivo principal</label><select id="objetivo" name="objetivo" required>
 <option value="">Selecione</option>
 <option>Estética e composição corporal</option>
@@ -569,13 +597,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <option>Preparação para palco (fisiculturismo)</option>
 <option>Saúde e qualidade de vida</option>
 <option>Mais de um objetivo combinado</option>
-</select></div>
-<div class="form-row"><label for="modalidade">Modalidade desejada</label><select id="modalidade" name="modalidade" required>
-<option value="">Selecione</option>
-<option>Personal Presencial · São Paulo Zona Oeste</option>
-<option>Personal Presencial · São Paulo Zona Sul</option>
-<option>Consultoria Online · de qualquer lugar</option>
-<option>Sem preferência · me orienta</option>
 </select></div>
 <div class="form-row"><label for="experiencia">Tempo treinando</label><select id="experiencia" name="experiencia" required>
 <option value="">Selecione</option>
@@ -600,9 +621,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <option>No próximo mês</option>
 <option>Estou pesquisando · sem urgência</option>
 </select></div>
-<div class="form-row"><label for="restricao">Tem dor, lesão ou restrição médica? (opcional)</label><input type="text" id="restricao" name="restricao" placeholder="Ex: dor lombar, joelho, escoliose, hérnia, nenhum…"></div>
+<div class="form-row full"><label for="restricao">Tem dor, lesão ou restrição médica? (opcional)</label><input type="text" id="restricao" name="restricao" placeholder="Ex: dor lombar, joelho, escoliose, hérnia, nenhum…"></div>
 <div class="form-row full"><label for="motivo">O que te fez aplicar agora?</label><textarea id="motivo" name="motivo" placeholder="Conta em 2 ou 3 linhas o que está te incomodando ou o que quer alcançar." required></textarea></div>
-<div class="form-row full"><button type="submit" class="submit-btn">Enviar aplicação</button><p class="privacy">Suas respostas vão direto pro Victor · resposta em até 24h via WhatsApp</p></div>
+<div class="btn-row"><button type="button" class="btn-back" id="form-back">← Voltar</button><button type="submit" class="submit-btn">Enviar aplicação</button></div>
+<p class="privacy" style="grid-column:1/-1;margin-top:0">Suas respostas vão direto pro Victor · resposta em até 24h via WhatsApp</p>
+</div>
 </form>
 <div id="aplicacao-error" role="alert" aria-live="polite" style="display:none;margin-top:16px;padding:14px 18px;background:#2A1A1A;border:1px solid #553333;color:#FFB4B4;font-size:14px;font-family:'Inter',sans-serif;"></div>
 <div id="aplicacao-success" class="success">
@@ -616,7 +639,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <p class="eyebrow">Próximo passo</p>
 <h2 class="display">Se está a fim<br>de começar,<br>começa agora.</h2>
 <p>Aplicação avaliada em até 24h. Vagas limitadas por mês para garantir qualidade do atendimento. Sem promessa fácil. Trabalho de verdade.</p>
-<a href="#aplicar" class="cta cta-gold">Aplicar agora</a>
+<a href="#aplicar" class="cta cta-gold" data-loc="closing">Aplicar agora</a>
 <span class="cta-sub">Resposta em até 24h · Vagas limitadas</span>
 </div></div></section>
 </main>
@@ -624,7 +647,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <footer>
 <div class="footer-left"><img src="logo/va_symbol.png" alt="" class="footer-logo" width="32" height="32" decoding="async" loading="lazy"><span>VICTOR AMIN · MÉTODO ALTA PERFORMANCE</span></div>
 <div>São Paulo · Brasil</div>
-<a href="https://instagram.com/victoraminn" target="_blank" rel="noopener" aria-label="Instagram do Victor Amin (abre em nova aba)">@VICTORAMINN</a>
+<a href="https://instagram.com/victoraminn" target="_blank" rel="noopener" data-loc="footer" aria-label="Instagram do Victor Amin (abre em nova aba)">@VICTORAMINN</a>
 </footer>
 <script>
 // Lazy load backgrounds via IntersectionObserver (data-bg-jpg + data-bg-webp)
@@ -640,8 +663,32 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('[data-bg-jpg]').forEach(setBg);
 }
 })();
-document.querySelectorAll('.faq-item').forEach(item=>{const q=item.querySelector('.faq-q');q.setAttribute('aria-expanded','false');q.addEventListener('click',()=>{item.classList.toggle('open');q.setAttribute('aria-expanded',item.classList.contains('open')?'true':'false');});});
-document.querySelectorAll('.cta').forEach(btn=>{btn.addEventListener('click',()=>{if(typeof fbq!=='undefined'){const txt=btn.textContent.toLowerCase();const tipo=txt.includes('avalia')?'Aplicação Personal Presencial':txt.includes('agora')?'Aplicação Geral':'Aplicação Consultoria Online';fbq('track','ViewContent',{content_name:tipo});}});});
+// === ANALYTICS · Pixel + GA4 + dataLayer unificado ===
+// GA4 ativa automático quando window.gtag existir. Sem ID, eventos vão pra dataLayer + Pixel.
+window.dataLayer=window.dataLayer||[];
+const track=(event,params={})=>{try{
+  if(typeof fbq!=='undefined'){
+    const std=['ViewContent','Lead','Contact','Schedule','CompleteRegistration','InitiateCheckout','PageView','AddToWishlist'];
+    const opts=params.event_id?{eventID:params.event_id}:{};
+    std.includes(event)?fbq('track',event,params,opts):fbq('trackCustom',event,params,opts);
+  }
+  if(typeof gtag!=='undefined')gtag('event',event,params);
+  window.dataLayer.push({event,...params,_ts:Date.now()});
+}catch(e){}};
+// Scroll depth (one-shot 25/50/75/100)
+const _sd=new Set();let _sdT;
+addEventListener('scroll',()=>{clearTimeout(_sdT);_sdT=setTimeout(()=>{const h=document.documentElement.scrollHeight-innerHeight;if(h<=0)return;const p=Math.min(100,Math.round(scrollY/h*100));[25,50,75,100].forEach(m=>{if(p>=m&&!_sd.has(m)){_sd.add(m);track('ScrollDepth',{depth_pct:m});}});},150);},{passive:true});
+// Time on page (engaged · só dispara se aba ativa)
+[15,30,60,180].forEach(s=>setTimeout(()=>document.visibilityState==='visible'&&track('TimeOnPage',{seconds:s}),s*1000));
+// FAQ — toggle UI + tracking
+document.querySelectorAll('.faq-item').forEach(item=>{const q=item.querySelector('.faq-q');q.setAttribute('aria-expanded','false');q.addEventListener('click',()=>{item.classList.toggle('open');const open=item.classList.contains('open');q.setAttribute('aria-expanded',open?'true':'false');if(open)track('FAQOpen',{faq_question:(q.textContent||'').trim().slice(0,80)});});});
+// CTAs — enriched com data-loc + texto
+document.querySelectorAll('.cta').forEach(btn=>{btn.addEventListener('click',()=>{const loc=btn.dataset.loc||'unknown';const txt=(btn.textContent||'').trim();const t=txt.toLowerCase();const tipo=t.includes('avalia')?'Aplicação Personal Presencial':t.includes('agora')?'Aplicação Geral':'Aplicação Consultoria Online';track('ViewContent',{content_name:tipo,cta_location:loc,cta_text:txt});});});
+// Outbound · WhatsApp + Instagram (delegated)
+addEventListener('click',e=>{const wa=e.target.closest('a[href*="wa.me"]');const ig=e.target.closest('a[href*="instagram"]');if(wa)track('Contact',{method:'whatsapp',location:wa.dataset.loc||'fallback'});else if(ig)track('Contact',{method:'instagram',location:ig.dataset.loc||'unknown'});});
+// Section views (one-shot por section · threshold 40%)
+const _sv=new Set();const _svObs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const cls=(e.target.className||'').split(' ').find(c=>c&&c!=='fade-up'&&c!=='visible')||e.target.id||'unknown';if(_sv.has(cls))return;_sv.add(cls);track('SectionView',{section_name:cls});});},{threshold:0.4});
+document.querySelectorAll('main section').forEach(s=>_svObs.observe(s));
 // Slider · respeita prefers-reduced-motion · aria-current na bullet ativa · keyboard nav
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.querySelectorAll('.case-slider').forEach((slider,sliderIdx)=>{
@@ -674,14 +721,56 @@ const submitBtn=form.querySelector('.submit-btn');
 const originalLabel=submitBtn?submitBtn.textContent:'Enviar aplicação';
 const uuid=()=>('10000000-1000-4000-8000-100000000000').replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16));
 const fallbackWA=(data)=>{const msg=`🟡 NOVA APLICAÇÃO · Site Victor Amin\n\nNome: ${data.nome}\nWhatsApp: ${data.whatsapp}\nEmail: ${data.email}\nObjetivo: ${data.objetivo}\nModalidade: ${data.modalidade}`;return `https://wa.me/5511978739319?text=${encodeURIComponent(msg)}`;};
+// FormStart · primeira interação (focus em qualquer campo · ignora honeypot)
+let _formStarted=false,_formSubmitted=false,_currentStep=1;
+const _formFields=form.querySelectorAll('input:not([type=hidden]),select,textarea');
+_formFields.forEach(el=>el.addEventListener('focus',()=>{if(_formStarted||el.id==='hp_website')return;_formStarted=true;track('FormStart',{form_name:'aplicacao',first_field:el.name||el.id});},{once:true}));
+// 2-step navigation
+const _step1=form.querySelector('[data-step="1"]');
+const _step2=form.querySelector('[data-step="2"]');
+const _stepLabel=form.querySelector('#form-step-label');
+const _dots=form.querySelectorAll('.form-progress .dot');
+const _nextBtn=form.querySelector('#form-next');
+const _backBtn=form.querySelector('#form-back');
+const _showStep=(n)=>{
+  _currentStep=n;
+  _step1.classList.toggle('active',n===1);_step1.toggleAttribute('hidden',n!==1);
+  _step2.classList.toggle('active',n===2);_step2.toggleAttribute('hidden',n!==2);
+  _dots.forEach(d=>d.classList.toggle('active',Number(d.dataset.dot)<=n));
+  if(_stepLabel)_stepLabel.textContent=n===1?'Etapa 1 de 2 · Contato':'Etapa 2 de 2 · Qualificação';
+  // foca primeiro campo da etapa nova (UX) + scroll suave pro form
+  const firstField=(n===1?_step1:_step2).querySelector('input,select,textarea');
+  if(firstField)setTimeout(()=>firstField.focus({preventScroll:true}),50);
+  document.getElementById('aplicar')?.scrollIntoView({behavior:'smooth',block:'start'});
+};
+if(_nextBtn)_nextBtn.addEventListener('click',()=>{
+  // Valida só os campos required da etapa 1 (HTML5 native)
+  const step1Fields=_step1.querySelectorAll('input[required],select[required],textarea[required]');
+  let allValid=true;
+  step1Fields.forEach(el=>{if(!el.checkValidity()){el.reportValidity();allValid=false;}});
+  if(!allValid)return;
+  track('FormStep1Complete',{form_name:'aplicacao'});
+  _showStep(2);
+  track('FormStep2View',{form_name:'aplicacao'});
+});
+if(_backBtn)_backBtn.addEventListener('click',()=>{track('FormStepBack',{form_name:'aplicacao',from_step:2});_showStep(1);});
+// FormAbandon · usa visibilitychange (mais confiável que beforeunload em mobile)
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState!=='hidden'||!_formStarted||_formSubmitted)return;
+  const filled=Array.from(_formFields).filter(el=>el.value&&el.id!=='hp_website').length;
+  if(filled===0)return;
+  track('FormAbandon',{form_name:'aplicacao',fields_filled:filled,fields_total:_formFields.length,completion_pct:Math.round(filled/_formFields.length*100)});
+  _formSubmitted=true;
+});
 form.addEventListener('submit',async e=>{
 e.preventDefault();
+_formSubmitted=true;
 if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='Enviando…';}
 const data=Object.fromEntries(new FormData(form).entries());
 const event_id=uuid();
 data.event_id=event_id;
-// Client Pixel: dispara com mesmo event_id pra dedupe com CAPI server-side
-if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Aplicação Formulário',objetivo:data.objetivo,modalidade:data.modalidade,investimento:data.investimento},{eventID:event_id});}
+// Client Pixel + GA4 + dataLayer · dedup com CAPI server-side via event_id
+track('Lead',{content_name:'Aplicação Formulário',objetivo:data.objetivo,modalidade:data.modalidade,investimento:data.investimento,urgencia:data.urgencia,event_id});
 try{
 const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
 const json=await r.json().catch(()=>({}));
@@ -690,15 +779,18 @@ if(!r.ok||!json.ok){
 if(submitBtn){submitBtn.disabled=false;submitBtn.textContent=originalLabel;}
 const errEl=document.getElementById('aplicacao-error');
 if(errEl){errEl.textContent='Não consegui enviar pelo site. Continua pelo WhatsApp.';errEl.style.display='block';}
+track('LeadFallback',{reason:'upstream_error',status:r.status});
 window.open(fallbackWA(data),'_blank');
 return;
 }
+track('CompleteRegistration',{content_name:'Aplicação Enviada',event_id});
 form.style.display='none';
 document.getElementById('aplicacao-success').classList.add('show');
 // Redirect Instagram após 2s pra deixar Pixel disparar e usuário ler confirmação
 setTimeout(()=>{window.location.href=json.redirect||'https://www.instagram.com/victoraminn/';},2000);
 }catch(err){
 if(submitBtn){submitBtn.disabled=false;submitBtn.textContent=originalLabel;}
+track('LeadFallback',{reason:'network_error'});
 window.open(fallbackWA(data),'_blank');
 }
 });}
