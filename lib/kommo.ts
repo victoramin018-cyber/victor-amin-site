@@ -130,17 +130,31 @@ function cf(field_id: number, value: string) {
 }
 
 function extractLeadId(body: unknown): number | undefined {
-  // Kommo retorna { _embedded: { leads: [{ id: N, ... }] } }
-  if (!body || typeof body !== "object") return undefined;
-  const root = body as Record<string, unknown>;
-  const embedded = root._embedded;
-  if (!embedded || typeof embedded !== "object") return undefined;
-  const leads = (embedded as Record<string, unknown>).leads;
-  if (!Array.isArray(leads) || leads.length === 0) return undefined;
-  const first = leads[0];
-  if (!first || typeof first !== "object") return undefined;
-  const id = (first as Record<string, unknown>).id;
-  return typeof id === "number" ? id : undefined;
+  if (!body) return undefined;
+  // /leads/complex retorna array root: [{id, contact_id, ...}]
+  if (Array.isArray(body) && body.length > 0) {
+    const first = body[0];
+    if (first && typeof first === "object") {
+      const id = (first as Record<string, unknown>).id;
+      if (typeof id === "number") return id;
+    }
+  }
+  // /leads (regular) retorna { _embedded: { leads: [{id, ...}] } }
+  if (typeof body === "object") {
+    const root = body as Record<string, unknown>;
+    const embedded = root._embedded;
+    if (embedded && typeof embedded === "object") {
+      const leads = (embedded as Record<string, unknown>).leads;
+      if (Array.isArray(leads) && leads.length > 0) {
+        const first = leads[0];
+        if (first && typeof first === "object") {
+          const id = (first as Record<string, unknown>).id;
+          if (typeof id === "number") return id;
+        }
+      }
+    }
+  }
+  return undefined;
 }
 
 /**
