@@ -76,6 +76,25 @@ Log datado do que foi shipado. Append-only. Curador `:mem` revisa semanal.
 - [ ] Apagar leads de teste do Kommo (busca por "[SITE] TESTE")
 - [ ] (Opcional) Criar custom fields no Kommo pra qualificação estruturada (idade/objetivo/modalidade/...). Sem isso, payload qualificador vai como Note no lead — funcional mas menos navegável.
 
+## 2026-05-02 · Sprint 3 fechado · SEO + OG + Schema + sitemap + robots
+- [x] `<title>` 60c · `<meta description>` 155c · author · robots index,follow
+- [x] `<link rel="canonical">` https://www.victoramin.com/
+- [x] theme-color #0A0A0A · color-scheme dark · favicon + apple-touch-icon
+- [x] Open Graph completo (og:type/url/locale/site_name/title/description/image+w/h/alt)
+- [x] Twitter Card summary_large_image
+- [x] JSON-LD `@graph`: Person + LocalBusiness + Service Presencial + Service Online (validado parse OK)
+- [x] `public/og.jpg` 1200×630 · 60KB · brand colors + Anton "POSTURA PRIMEIRO. ESTÉTICA COMO CONSEQUÊNCIA."
+- [x] `public/robots.txt` com Sitemap + AI bots whitelist (GPTBot, ClaudeBot, Perplexity, Google-Extended, CCBot)
+- [x] `public/sitemap.xml` com image entry
+- [x] Vercel headers: og.jpg cache 1d · sitemap/robots content-type explicito + cache 1h
+- [x] `tools/generate_og.py` (PIL + Anton/Inter TTFs) — re-rodável pra atualizar a OG image
+
+### ⏳ Validação manual Sprint 3
+- [ ] Facebook Sharing Debugger — testar https://www.victoramin.com aparece com OG: https://developers.facebook.com/tools/debug/
+- [ ] Twitter Card Validator: https://cards-dev.twitter.com/validator
+- [ ] Google Rich Results Test (JSON-LD): https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.victoramin.com%2F
+- [ ] Submeter sitemap em Google Search Console (https://search.google.com/search-console)
+
 ## Pré-requisitos pendentes (user)
 - [x] Domínio victoramin.com reativado (Namecheap · ICANN verification OK)
 - [x] DNS Type Namecheap BasicDNS ativo
