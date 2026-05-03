@@ -95,6 +95,36 @@ Log datado do que foi shipado. Append-only. Curador `:mem` revisa semanal.
 - [ ] Google Rich Results Test (JSON-LD): https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.victoramin.com%2F
 - [ ] Submeter sitemap em Google Search Console (https://search.google.com/search-console)
 
+## 2026-05-03 · Sprint 4 + Sprint 5 fechados em conjunto
+
+### Performance
+- [x] 29 imagens convertidas pra WebP via `tools/convert_webp.py` (PIL · qualidade 80, max-1600px)
+  · 3962KB → 2037KB (economia 49% · ~1.9MB)
+- [x] 22 inline backgrounds convertidos pra `data-bg-*` (lazy via IntersectionObserver)
+  · supportsWebP detection no client · serve WebP/JPG conforme browser
+  · rootMargin 200px (preload smooth)
+  · placeholder #1F1F1F enquanto carrega
+- [x] Hero `.va-foto` permanece eager (above-fold LCP)
+- [x] 4 CSS rules com `image-set()` fallback (hero antes/depois + 2 ::before decorativos)
+- [x] `<img>` com width/height explícitos · `decoding="async"` · `loading="lazy"` no footer
+
+### A11Y WCAG 2.1 AA
+- [x] Skip link "Pular para o conteúdo" (visível só no foco · gold/black contrast 12:1+)
+- [x] `<main id="main">` wrap conteúdo · `<nav aria-label>` · `<a aria-label>` em ícones
+- [x] `:focus-visible` outline 2px gold em todos interativos
+- [x] `prefers-reduced-motion` respeitado (animations <0.01ms · scroll-auto · slider sem auto-play · fade-up sempre visível)
+- [x] Slider acessível: `role="region"` · `aria-roledescription="carrossel"` · bullets com `aria-label "Slide N de M"` · `role="tab"` · `aria-current` sincronizado
+- [x] Slider keyboard nav: ←/→ navega · Space pausa · `tabindex=0` no container
+- [x] Slider auto-pause em `visibilitychange` (aba inativa não consome bateria)
+- [x] FAQ: `aria-expanded` sincronizado com `.open`
+- [x] Form labels já estavam associadas (`for/id`) · `aria-live="polite"` no error já existia
+
+### ⏳ Validação manual Sprint 4 + 5
+- [ ] Lighthouse Mobile: https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fwww.victoramin.com (alvo: Performance >90 · A11Y >95 · Best Practices 100 · SEO >95)
+- [ ] axe DevTools (Chrome extension): rodar na home, alvo 0 issues
+- [ ] WAVE: https://wave.webaim.org/report#/https://www.victoramin.com (alvo 0 errors, 0 contrast errors)
+- [ ] Manual NVDA/VoiceOver: navegação por Tab + leitura do form e slider
+
 ## Pré-requisitos pendentes (user)
 - [x] Domínio victoramin.com reativado (Namecheap · ICANN verification OK)
 - [x] DNS Type Namecheap BasicDNS ativo
