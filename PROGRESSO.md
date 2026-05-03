@@ -58,13 +58,23 @@ Log datado do que foi shipado. Append-only. Curador `:mem` revisa semanal.
 - [x] Deploy em produção · smoke tests passam (405, 400, 502 com event_id)
 - [x] Meta facebook-domain-verification token servindo
 
-### ⏳ Pendente p/ ativar Sprint 2 (env vars no Vercel)
-- [ ] `META_CAPI_ACCESS_TOKEN` — Events Manager → Pixel → Settings → Generate token
-- [ ] `KOMMO_LONG_LIVED_TOKEN` — Settings → Integrações → Criar integração → Long-lived token
-- [ ] (opcional) `KOMMO_PIPELINE_ID` + `KOMMO_STATUS_ID` — eu queryo após token
-- [ ] (opcional) `KOMMO_CF_*_ID` — eu queryo após token; sem eles, fallback Note
+### ✅ Sprint 2 ativada · 2026-05-02 ~22:20 UTC
+- [x] `META_CAPI_ACCESS_TOKEN` configurado em produção
+- [x] `KOMMO_LONG_LIVED_TOKEN` configurado (JWT 1083c · expira 02/05/2027)
+- [x] `KOMMO_SUBDOMAIN=victoramin018` configurado
+- [x] `KOMMO_PIPELINE_ID=13613815` (Funil de vendas) configurado
+- [x] `KOMMO_STATUS_ID=105057087` (Etapa de leads de entrada) configurado
+- [x] Integração privada criada no Kommo: `Site Victor Amin · API Lead` (id `482d696d-b62b-4885-8473-3f2a93122ed5`)
+- [x] Smoke test V1 → lead `75993840` criado em Kommo (tags ORIGEM-SITE + Consultoria Online + urgência)
+- [x] Smoke test V2 → endpoint 200 ok (Kommo dedupliou por mesmo phone)
+- [x] Smoke test V3 → endpoint 200 ok (phone novo · pós-fix)
+- [x] Bug fix: `extractLeadId` agora suporta resposta array root de `/leads/complex`
 
-Configurar em: https://vercel.com/victoramin018-cybers-projects/victor-amin-site/settings/environment-variables
+### ⏳ Pendente Sprint 2 (manual user)
+- [ ] **Confirmar visualmente no Kommo** que o(s) lead(s) `[SITE] TESTE...` aparece(m) no dashboard
+- [ ] **Conferir Test Events tab no Meta Events Manager** — eventos `Lead` com event_id devem aparecer (link: https://business.facebook.com/events_manager2/list/pixel/465701309646610/test_events)
+- [ ] Apagar leads de teste do Kommo (busca por "[SITE] TESTE")
+- [ ] (Opcional) Criar custom fields no Kommo pra qualificação estruturada (idade/objetivo/modalidade/...). Sem isso, payload qualificador vai como Note no lead — funcional mas menos navegável.
 
 ## Pré-requisitos pendentes (user)
 - [x] Domínio victoramin.com reativado (Namecheap · ICANN verification OK)

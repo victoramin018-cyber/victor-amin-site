@@ -3,9 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="color-scheme" content="dark">
+
+<title>Victor Amin · Personal Trainer SP · Método Alta Performance</title>
+<meta name="description" content="Personal trainer alto padrão em São Paulo. Postura primeiro, estética como consequência. Método aplicado em atletas de fisiculturismo e alunos com resultado em 90 dias.">
+<meta name="author" content="Victor Amin">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<link rel="canonical" href="https://www.victoramin.com/">
+
 <meta name="facebook-domain-verification" content="yskkcux2m16r8l4oi3y3f69w0ovm4n">
-<meta property="og:title" content="Victor Amin · Método Alta Performance">
-<title>Victor Amin · Método Alta Performance</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.victoramin.com/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Victor Amin · Método Alta Performance">
+<meta property="og:title" content="Victor Amin · Personal Trainer SP · Método Alta Performance">
+<meta property="og:description" content="Postura primeiro. Estética como consequência. Personal trainer alto padrão em São Paulo · Consultoria Online no Brasil.">
+<meta property="og:image" content="https://www.victoramin.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Victor Amin · Método Alta Performance · Postura primeiro, estética como consequência">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.victoramin.com/">
+<meta name="twitter:title" content="Victor Amin · Personal Trainer SP · Método Alta Performance">
+<meta name="twitter:description" content="Postura primeiro. Estética como consequência. Personal Presencial em SP · Consultoria Online no Brasil.">
+<meta name="twitter:image" content="https://www.victoramin.com/og.jpg">
+<meta name="twitter:image:alt" content="Victor Amin · Método Alta Performance">
+
+<link rel="icon" type="image/png" sizes="180x180" href="/logo/va_symbol.png">
+<link rel="apple-touch-icon" href="/logo/va_symbol.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -165,6 +196,98 @@ footer a:hover{color:var(--gold)}
 .fade-up{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.25,.1,.25,1)}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.victoramin.com/#person",
+      "name": "Victor Amin",
+      "alternateName": "Victor Amin Aguiar Haddad",
+      "url": "https://www.victoramin.com/",
+      "image": "https://www.victoramin.com/victor_hero/02_depois.jpg",
+      "jobTitle": "Personal Trainer e Treinador de Atletas de Fisiculturismo",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "UNIFESP — Educação Física"
+      },
+      "knowsAbout": ["Postura", "Composição corporal", "Fisiculturismo", "Performance esportiva", "Avaliação postural"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "sameAs": ["https://www.instagram.com/victoraminn/"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.victoramin.com/#business",
+      "name": "Victor Amin · Método Alta Performance",
+      "description": "Personal trainer alto padrão em São Paulo. Postura primeiro, estética como consequência.",
+      "url": "https://www.victoramin.com/",
+      "logo": "https://www.victoramin.com/logo/va_full.png",
+      "image": "https://www.victoramin.com/og.jpg",
+      "founder": { "@id": "https://www.victoramin.com/#person" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "São Paulo" },
+        { "@type": "Country", "name": "Brasil" }
+      ],
+      "priceRange": "R$ 150 — R$ 3.000 / mês",
+      "telephone": "+55-11-97873-9319",
+      "sameAs": ["https://www.instagram.com/victoraminn/"]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.victoramin.com/#personal-presencial",
+      "serviceType": "Personal Trainer Presencial",
+      "provider": { "@id": "https://www.victoramin.com/#business" },
+      "areaServed": [
+        { "@type": "City", "name": "São Paulo" }
+      ],
+      "description": "Treino 1-a-1 presencial em São Paulo · Zonas Oeste e Sul · contrato mínimo 6 meses · avaliação postural na primeira sessão.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "BRL",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 1200,
+          "maxPrice": 3000,
+          "priceCurrency": "BRL",
+          "unitText": "MONTH"
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.victoramin.com/#consultoria-online",
+      "serviceType": "Consultoria Online",
+      "provider": { "@id": "https://www.victoramin.com/#business" },
+      "areaServed": { "@type": "Country", "name": "Brasil" },
+      "description": "Programa mensal online com treino, dieta, vídeos de execução e acompanhamento por WhatsApp.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "BRL",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 150,
+          "maxPrice": 200,
+          "priceCurrency": "BRL",
+          "unitText": "MONTH"
+        }
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <nav class="nav">

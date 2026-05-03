@@ -1,0 +1,26 @@
+# www.victoramin.com · robots
+# Permite indexação total · sitemap referenciado abaixo
+
+User-agent: *
+Allow: /
+
+# AI/LLM crawlers — explicitamente permitidos pra GEO/AEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# /api endpoints não fazem sentido pra busca
+Disallow: /api/
+
+Sitemap: https://www.victoramin.com/sitemap.xml
