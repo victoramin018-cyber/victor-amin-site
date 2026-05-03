@@ -125,6 +125,65 @@ Log datado do que foi shipado. Append-only. Curador `:mem` revisa semanal.
 - [ ] WAVE: https://wave.webaim.org/report#/https://www.victoramin.com (alvo 0 errors, 0 contrast errors)
 - [ ] Manual NVDA/VoiceOver: navegação por Tab + leitura do form e slider
 
+## 2026-05-03 · Sprint Pós-Launch · GSC + Tracking + Kommo CF + Form CRO
+
+### Google Search Console
+- [x] Meta tag `google-site-verification` adicionada no `<head>` (token `s0eL9FmLpzyX6Ytfj5wD4f_UihvXvDopmEDtKWeJ2UM`)
+- [x] Verificada automaticamente no GSC (método Tag HTML)
+- [ ] Submeter sitemap.xml em GSC → Sitemaps
+- [ ] (Opcional) Adicionar segundo método de verificação em GSC → Configurações → Verificação de propriedade (DNS TXT no Namecheap)
+
+### Sprint D · Analytics enriched (Pixel + GA4 + dataLayer)
+- [x] Tracker unificado `track(event, params)` que dispara em Pixel (standard ou custom auto-detect) + GA4 (gtag) + window.dataLayer
+- [x] Scroll depth one-shot em 25/50/75/100% (passive listener + debounce 150ms)
+- [x] Time on page em 15/30/60/180s (só dispara se aba ativa)
+- [x] SectionView via IntersectionObserver threshold 0.4 (one-shot por section)
+- [x] CTA enriched com `data-loc` (hero / offer-presencial / offer-online / closing) + `cta_text`
+- [x] Outbound delegated: WhatsApp (`a[href*="wa.me"]`) + Instagram (`a[href*="instagram"]`)
+- [x] FAQOpen captura primeiros 80c da pergunta
+- [x] FormStart no primeiro focus (ignora honeypot)
+- [x] FormAbandon via visibilitychange (mais confiável que beforeunload em mobile) com fields_filled + completion_pct
+- [x] CompleteRegistration disparado após 200 ok do /api/lead
+- [x] LeadFallback (reason: upstream_error / network_error) pra debugar conversões perdidas
+- [x] GA4 = stub: dataLayer sempre populado, gtag chamado se existir (sem ID, fica dormindo até user adicionar Measurement ID)
+
+### Sprint A · Kommo Custom Fields (setup automatizado)
+- [x] `tools/setup_kommo_fields.mjs` cria 7 custom fields no Kommo via API v4
+  - Idade (numeric), Objetivo (select 6 opções), Tempo treinando (select 5), Investimento (select 5), Urgência (select 4), Restrição (textarea), Motivo (textarea)
+- [x] Idempotente: lista existentes, reusa por nome, cria só os faltantes
+- [x] Suporte `--list` pra inspecionar fields existentes
+- [x] Suporte `--dry-run` pra ver o que seria criado sem gravar
+- [x] Output formatado: `KOMMO_CF_*_ID=12345` (uma linha por campo, pronto pra colar)
+- [x] Suporte runtime já existia em `lib/kommo.ts` (não mudou nada)
+
+### Sprint B · Form CRO 2-step
+- [x] Etapa 1 (5 campos · low friction): nome, idade, whatsapp, email, modalidade
+- [x] Etapa 2 (6 campos · qualificação): objetivo, experiencia, investimento, urgencia, restricao, motivo
+- [x] Progress dots visuais (1 ativa → 2 ativas) + label dinâmico ("Etapa N de 2 · X")
+- [x] Botão "Continuar →" valida só required da etapa 1 (HTML5 native checkValidity + reportValidity)
+- [x] Botão "← Voltar" preserva todos os valores
+- [x] Auto-focus no primeiro campo da nova etapa + scroll suave pro form
+- [x] Mobile responsive: grid 1col + btn-row column-reverse (Voltar embaixo)
+- [x] Tracking FormStep1Complete / FormStep2View / FormStepBack
+- [x] Eyebrow atualizado: "Aplicação · 2 etapas · 90 segundos"
+
+### ⏳ Pendente user pra Sprint A funcionar
+- [ ] Rodar localmente: `cd D:/VICTOR PC/dev/victor-amin-site && KOMMO_LONG_LIVED_TOKEN=<token> node tools/setup_kommo_fields.mjs`
+- [ ] Copiar os 7 IDs do output e adicionar no Vercel: `vercel env add KOMMO_CF_*_ID production`
+- [ ] Redeploy: `npx vercel --prod` (pra carregar as novas envs no runtime)
+
+### ⏳ Pendente git
+- [ ] `cd D:/VICTOR PC/dev/victor-amin-site && git push origin main` (push direto bloqueado pelo hook do harness · 2 commits locais à frente: `e821d64` feat + `eff2163` chore)
+
+### ⏳ Validação manual pós-deploy
+- [ ] Abrir https://www.victoramin.com em DevTools, abrir Console, scrollar até o fim → verificar que dataLayer.push aparece com ScrollDepth/TimeOnPage/SectionView
+- [ ] Abrir form, focar campo → verificar FormStart no console
+- [ ] Preencher etapa 1, clicar Continuar → verificar FormStep1Complete + FormStep2View
+- [ ] Abrir aba e fechar com etapa parcialmente preenchida → verificar FormAbandon dispara
+- [ ] Submeter form completo → verificar Lead + CompleteRegistration disparam
+- [ ] Pixel Helper Chrome ext: confirma que todos os eventos chegam no Pixel
+- [ ] Meta Events Manager Test Events: confirma dedup por event_id
+
 ## Pré-requisitos pendentes (user)
 - [x] Domínio victoramin.com reativado (Namecheap · ICANN verification OK)
 - [x] DNS Type Namecheap BasicDNS ativo
