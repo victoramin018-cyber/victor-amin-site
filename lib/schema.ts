@@ -74,6 +74,14 @@ export const LeadSchema = z.object({
   restricao: z.string().trim().max(300).optional().default(""),
   motivo: z.string().trim().min(10, "Conta um pouco mais").max(2000),
 
+  // LGPD · checkbox obrigatório no form. Browser envia "1" quando marcado;
+  // ausente quando não marcado. Server rejeita 400 se faltar (não cria lead sem consent).
+  lgpd_consent: z
+    .union([z.literal("1"), z.literal("on"), z.literal("true"), z.boolean()])
+    .refine((v) => v === "1" || v === "on" || v === "true" || v === true, {
+      message: "Consentimento LGPD obrigatório",
+    }),
+
   // Dedup CAPI ↔ client Pixel — UUID v4 gerado no browser, propagado pro server.
   // Se faltar, server gera o seu (perde dedup mas evento ainda dispara).
   event_id: z.string().uuid().optional(),

@@ -45,6 +45,17 @@
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','465701309646610');fbq('track','PageView');
 </script>
+<!-- GA4 — substituir G-XXXXXXXXXX pelo Measurement ID quando criar a propriedade.
+     O track() helper em index.html já chama gtag() automaticamente, então todos
+     os eventos enriched (ScrollDepth, TimeOnPage, FormStart, etc) entram no GA4
+     sem precisar tocar no resto. Descomentar as 4 linhas abaixo:
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-XXXXXXXXXX');
+</script>
+-->
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=465701309646610&ev=PageView&noscript=1" alt=""></noscript>
 <style>
 :root{--bg:#0A0A0A;--fg:#F5F4F0;--gold:#FFCC00;--gold-deep:#E0B400;--panel:#1F1F1F;--line:#2A2A2A;--muted:#888;--max:1240px;--section-pad:120px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -192,6 +203,15 @@ section{padding:var(--section-pad) 0;position:relative}
 .form-section .btn-back{background:transparent;color:var(--fg);border:1px solid var(--line);font-family:'Anton',sans-serif;font-size:14px;padding:0 28px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:all .2s}
 .form-section .btn-back:hover{border-color:var(--gold);color:var(--gold)}
 @media(max-width:700px){.form-section .form-grid,.form-section .form-step{grid-template-columns:1fr}.form-section .btn-row{flex-direction:column-reverse}.form-section .btn-back{padding:16px}}
+.form-section .form-consent{grid-column:1/-1;display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(255,204,0,.04);border:1px solid var(--line);font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;color:rgba(245,244,240,.85)}
+.form-section .form-consent input[type=checkbox]{appearance:none;-webkit-appearance:none;flex-shrink:0;width:20px;height:20px;border:2px solid var(--line);background:var(--bg);cursor:pointer;position:relative;margin-top:1px;transition:border-color .2s}
+.form-section .form-consent input[type=checkbox]:hover{border-color:var(--gold)}
+.form-section .form-consent input[type=checkbox]:checked{background:var(--gold);border-color:var(--gold)}
+.form-section .form-consent input[type=checkbox]:checked::after{content:"";position:absolute;left:5px;top:1px;width:6px;height:11px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.form-section .form-consent input[type=checkbox]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.form-section .form-consent label{font-family:'Inter',sans-serif;font-size:13px;color:rgba(245,244,240,.85);text-transform:none;letter-spacing:0;cursor:pointer}
+.form-section .form-consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.form-section .form-consent a:hover{color:var(--gold-deep)}
 .closing{min-height:90vh;display:flex;align-items:center;background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);position:relative;overflow:hidden}
 .closing::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background-image:url('victor_hero/02_depois.jpg');background-image:image-set(url('victor_hero/02_depois.webp') type('image/webp'),url('victor_hero/02_depois.jpg') type('image/jpeg'));background-size:cover;background-position:center 30%;filter:grayscale(1) contrast(1.15) brightness(.85);opacity:.6}
 .closing::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,1) 0%,rgba(10,10,10,.85) 50%,rgba(10,10,10,.3) 100%);pointer-events:none}
@@ -623,6 +643,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 </select></div>
 <div class="form-row full"><label for="restricao">Tem dor, lesão ou restrição médica? (opcional)</label><input type="text" id="restricao" name="restricao" placeholder="Ex: dor lombar, joelho, escoliose, hérnia, nenhum…"></div>
 <div class="form-row full"><label for="motivo">O que te fez aplicar agora?</label><textarea id="motivo" name="motivo" placeholder="Conta em 2 ou 3 linhas o que está te incomodando ou o que quer alcançar." required></textarea></div>
+<div class="form-consent"><input type="checkbox" id="lgpd_consent" name="lgpd_consent" value="1" required><label for="lgpd_consent">Li e concordo com a <a href="/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>. Autorizo o tratamento dos meus dados pessoais conforme LGPD pra avaliação da aplicação e contato via WhatsApp/email.</label></div>
 <div class="btn-row"><button type="button" class="btn-back" id="form-back">← Voltar</button><button type="submit" class="submit-btn">Enviar aplicação</button></div>
 <p class="privacy" style="grid-column:1/-1;margin-top:0">Suas respostas vão direto pro Victor · resposta em até 24h via WhatsApp</p>
 </div>
@@ -646,7 +667,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 <footer>
 <div class="footer-left"><img src="logo/va_symbol.png" alt="" class="footer-logo" width="32" height="32" decoding="async" loading="lazy"><span>VICTOR AMIN · MÉTODO ALTA PERFORMANCE</span></div>
-<div>São Paulo · Brasil</div>
+<div>São Paulo · Brasil · <a href="/privacidade">Política de Privacidade</a></div>
 <a href="https://instagram.com/victoraminn" target="_blank" rel="noopener" data-loc="footer" aria-label="Instagram do Victor Amin (abre em nova aba)">@VICTORAMINN</a>
 </footer>
 <script>
@@ -764,6 +785,14 @@ document.addEventListener('visibilitychange',()=>{
 });
 form.addEventListener('submit',async e=>{
 e.preventDefault();
+// Valida só campos required da etapa 2 (etapa 1 já foi validada no clique Continuar)
+const step2Fields=_step2.querySelectorAll('input[required],select[required],textarea[required]');
+let allValid=true;
+step2Fields.forEach(el=>{if(!el.checkValidity()){el.reportValidity();allValid=false;}});
+if(!allValid)return;
+// LGPD consent é obrigatório · server também rejeita mas mensagem aqui é mais clara
+const consent=form.querySelector('#lgpd_consent');
+if(consent&&!consent.checked){consent.reportValidity();consent.focus();return;}
 _formSubmitted=true;
 if(submitBtn){submitBtn.disabled=true;submitBtn.textContent='Enviando…';}
 const data=Object.fromEntries(new FormData(form).entries());
